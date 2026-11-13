@@ -49,17 +49,32 @@ h1{font-size:clamp(40px,6vw,76px);font-weight:800;letter-spacing:-.03em}
 figcaption{font-size:14px;color:var(--mute);margin-top:8px}
 footer{background:#fbfaff;padding:48px 0 64px;border-top:1px solid var(--line);color:var(--mute)}
 footer strong{color:var(--ink)}
-dialog{border:0;padding:0;background:transparent;max-width:100vw;max-height:100vh;width:100vw;height:100vh;overflow:hidden}
-dialog::backdrop{background:rgba(255,255,255,.35);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px)}
-.lb{position:relative;width:100%;height:100%;display:flex;align-items:center;justify-content:center;padding:56px 72px;touch-action:pan-y}
-.lb img{max-width:100%;max-height:100%;border-radius:10px;box-shadow:0 24px 60px -20px rgba(20,24,31,.55);background:#fff;transition:opacity .2s}
-.lb button{position:absolute;border:0;border-radius:99px;background:rgba(255,255,255,.85);color:#14181f;font:600 15px "Instrument Sans",sans-serif;cursor:pointer;box-shadow:0 4px 14px -6px rgba(0,0,0,.4)}
-.lb button:hover,.lb button:focus-visible{background:#fff;outline:2px solid #14181f}
-#x{top:14px;right:14px;padding:9px 16px}
-#pv,#nx{top:50%;transform:translateY(-50%);width:46px;height:46px;font-size:22px}
+dialog{border:0;padding:0;margin:0;background:transparent;width:100vw;height:100vh;height:100dvh;max-width:none;max-height:none;overflow:hidden}
+dialog::backdrop{background:rgba(255,255,255,.4);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px)}
+.lb{position:relative;width:100%;height:100%;overflow:hidden;touch-action:none;user-select:none;-webkit-user-select:none}
+#tr{display:flex;height:100%;will-change:transform}
+.sl{flex:0 0 100vw;height:100%;display:flex;align-items:center;justify-content:center;padding:64px 10px 84px}
+.sl img{max-width:100%;max-height:100%;object-fit:contain;border-radius:10px;box-shadow:0 24px 60px -20px rgba(20,24,31,.55);background:#fff;-webkit-user-drag:none;pointer-events:none}
+.lb button{position:absolute;border:0;border-radius:99px;background:rgba(255,255,255,.9);color:#14181f;font:600 16px "Instrument Sans",sans-serif;cursor:pointer;box-shadow:0 6px 18px -8px rgba(0,0,0,.45);touch-action:manipulation}
+.lb button:focus-visible{outline:3px solid #14181f}
+.lb button[hidden]{display:none}
+#x{top:max(14px,env(safe-area-inset-top));right:14px;height:48px;padding:0 20px}
+#pv,#nx{top:50%;transform:translateY(-50%);width:56px;height:56px;font-size:28px;line-height:1}
 #pv{left:14px}#nx{right:14px}
-#ct{position:absolute;bottom:14px;left:50%;transform:translateX(-50%);padding:6px 14px;border-radius:99px;background:rgba(255,255,255,.85);font-size:14px}
-@media (max-width:760px){.lb{padding:56px 12px 56px}#pv,#nx{top:auto;bottom:10px;transform:none}#pv{left:14px}#nx{right:14px}.hero .wrap,.head{grid-template-columns:1fr}.stack{height:300px}.shot,.shot.w{grid-column:span 6}.proj{padding:48px 0}}
+#ct{position:absolute;bottom:max(24px,env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);padding:8px 16px;border-radius:99px;background:rgba(255,255,255,.9);font-size:15px;font-weight:600}
+.hero{background-size:220% 220%;animation:flow 22s ease-in-out infinite alternate}
+@keyframes flow{from{background-position:0 50%}to{background-position:100% 50%}}
+.js .rv{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.8,.2,1)}
+.js .rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.hero{animation:none}.js .rv{opacity:1;transform:none;transition:none}}
+@media (max-width:760px){.hero .wrap,.head{grid-template-columns:1fr}.stack{height:300px}.proj{padding:48px 0}
+.grid{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding:0 24px;margin:0 -24px;padding:4px 24px 18px;-webkit-overflow-scrolling:touch}
+.phones{display:contents}
+.shot,.shot.w,.shot.f{flex:0 0 88%;grid-column:auto;scroll-snap-align:center;max-width:none!important;margin:0!important}
+.phone{flex:0 0 66%;width:auto;scroll-snap-align:center}
+#pv,#nx{top:auto;bottom:max(14px,env(safe-area-inset-bottom));transform:none}
+}
+@media (max-height:480px){.sl{padding:8px 70px}#pv,#nx{top:50%;bottom:auto;transform:translateY(-50%)}#ct{display:none}#x{height:42px}}
 </style>
 </head>
 <body>
@@ -74,10 +89,10 @@ dialog::backdrop{background:rgba(255,255,255,.35);-webkit-backdrop-filter:blur(1
 
 <main>
 <section class="proj" id="sempdec" style="--acc:#d9480f;--tint:#ffeadb"><div class="wrap">
-<div class="head"><div><h2>SEMPDEC</h2><div class="sub">Gestão da Defesa Civil municipal</div></div>
+<div class="head rv"><div><h2>SEMPDEC</h2><div class="sub">Gestão da Defesa Civil municipal</div></div>
 <div><p class="desc">Reúne em um só lugar o cadastro de famílias atendidas, o registro das ações em campo, as escalas de plantão, o contracheque e os feriados municipais.</p>
 <ul class="facts"><li><b>4.275</b><span>fichas de famílias</span></li><li><b>5</b><span>módulos</span></li></ul></div></div>
-<div class="grid">
+<div class="grid rv">
 <figure class="shot w"><button class="frame" data-z><img src="assets/sempdec-menu.webp" alt="Menu principal do SEMPDEC" loading="lazy"></button><figcaption>Menu principal com os cinco módulos</figcaption></figure>
 <figure class="shot w"><button class="frame" data-z><img src="assets/sempdec-familias.webp" alt="Lista de famílias cadastradas" loading="lazy"></button><figcaption>Famílias cadastradas, com filtro por motivo e comunidade, busca e geração de PDF e recibo</figcaption></figure>
 <figure class="shot w"><button class="frame" data-z><img src="assets/sempdec-acoes.webp" alt="Formulário de ação executada" loading="lazy"></button><figcaption>Registro de ações executadas</figcaption></figure>
@@ -86,10 +101,10 @@ dialog::backdrop{background:rgba(255,255,255,.35);-webkit-backdrop-filter:blur(1
 </div></div></section>
 
 <section class="proj" id="ymob" style="--acc:#2457c5;--tint:#e1ecff"><div class="wrap">
-<div class="head"><div><h2>YMOB</h2><div class="sub">Cadastro imobiliário da Prefeitura de Careiro</div></div>
+<div class="head rv"><div><h2>YMOB</h2><div class="sub">Cadastro imobiliário da Prefeitura de Careiro</div></div>
 <div><p class="desc">Os agentes preenchem a ficha do imóvel pelo celular, em sete etapas, e a equipe acompanha tudo em um painel administrativo, com fotos organizadas por bairro, quadra e lote.</p>
 <ul class="facts"><li><b>101</b><span>fichas cadastradas</span></li><li><b>7</b><span>etapas na ficha</span></li><li><b>18</b><span>quadras</span></li></ul></div></div>
-<div class="grid">
+<div class="grid rv">
 <div class="phones">
 <figure class="phone"><button class="frame" data-z><img src="assets/ymob-mobile-cadastro.webp" alt="Formulário de cadastro no celular" loading="lazy"></button><figcaption>Ficha em etapas, com inscrição imobiliária gerada automaticamente</figcaption></figure>
 <figure class="phone"><button class="frame" data-z><img src="assets/ymob-mobile-fichas.webp" alt="Lista de fichas salvas no celular" loading="lazy"></button><figcaption>Fichas salvas, com foto e busca</figcaption></figure>
@@ -101,10 +116,10 @@ dialog::backdrop{background:rgba(255,255,255,.35);-webkit-backdrop-filter:blur(1
 </div></div></section>
 
 <section class="proj" id="cadvisa" style="--acc:#c2255c;--tint:#ffe3ee"><div class="wrap">
-<div class="head"><div><h2>CADVISA</h2><div class="sub">Cadastro sanitário municipal</div></div>
+<div class="head rv"><div><h2>CADVISA</h2><div class="sub">Cadastro sanitário municipal</div></div>
 <div><p class="desc">Controla os estabelecimentos fiscalizados pela Vigilância Sanitária: situação, risco, licenciamento, cronograma mensal de fiscalização e biblioteca de legislação.</p>
 <ul class="facts"><li><b>786</b><span>estabelecimentos ativos</span></li><li><b>221</b><span>fiscalizados</span></li><li><b>40+</b><span>localidades</span></li></ul></div></div>
-<div class="grid">
+<div class="grid rv">
 <figure class="shot f"><button class="frame" data-z><img src="assets/cadvisa-dashboard.webp" alt="Dashboard do CADVISA" loading="lazy"></button><figcaption>Dashboard com fiscalizados, pendentes, inativos, classe de risco e categorias</figcaption></figure>
 <figure class="shot w"><button class="frame" data-z><img src="assets/cadvisa-estabelecimentos.webp" alt="Lista de estabelecimentos" loading="lazy"></button><figcaption>Estabelecimentos, com busca e filtros por localidade, categoria, risco e status</figcaption></figure>
 <figure class="shot w"><button class="frame" data-z><img src="assets/cadvisa-cronograma.webp" alt="Cronograma mensal de fiscalização" loading="lazy"></button><figcaption>Cronograma mensal de fiscalização, com bloqueio de meses encerrados</figcaption></figure>
@@ -115,19 +130,58 @@ dialog::backdrop{background:rgba(255,255,255,.35);-webkit-backdrop-filter:blur(1
 
 <footer><div class="wrap"><strong>Darlan Cardoso</strong> · Desenvolvedor de sistemas para a gestão pública · Careiro, AM</div></footer>
 
-<dialog id="dlg" aria-label="Galeria de telas"><div class="lb"><img alt=""><button type="button" id="x">Fechar</button><button type="button" id="pv" aria-label="Tela anterior">&#8249;</button><button type="button" id="nx" aria-label="Próxima tela">&#8250;</button><span id="ct"></span></div></dialog>
+<dialog id="dlg" aria-label="Galeria de telas"><div class="lb"><div id="tr"></div><button type="button" id="x">Fechar</button><button type="button" id="pv" aria-label="Tela anterior">&#8249;</button><button type="button" id="nx" aria-label="Próxima tela">&#8250;</button><span id="ct"></span></div></dialog>
 <script>
-(function(){var d=document.getElementById('dlg'),i=d.querySelector('img'),ct=document.getElementById('ct'),L=[],n=0;
-function show(k){n=(k+L.length)%L.length;i.src=L[n].src;i.alt=L[n].alt;ct.textContent=(n+1)+' de '+L.length}
+(function(){
+var H=document.documentElement;H.classList.add('js');
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.08});
+document.querySelectorAll('.rv').forEach(function(e){io.observe(e)});
+var d=document.getElementById('dlg'),tr=document.getElementById('tr'),ct=document.getElementById('ct'),pv=document.getElementById('pv'),nx=document.getElementById('nx'),lb=d.firstChild;
+var T=[],n=0,dx=0,sc=1,tx=0,ty=0,pts={},mode='',last,t0=0,moved=0,lastTap=0,closing=false;
+var DUR=matchMedia('(prefers-reduced-motion:reduce)').matches?0:380,EASE='cubic-bezier(.2,.8,.2,1)';
+function cur(){return tr.children[n].firstChild}
+function pos(a){tr.style.transition=a?'transform .38s '+EASE:'none';tr.style.transform='translateX('+(-n*innerWidth+dx)+'px)'}
+function zs(a){var m=cur();m.style.transition=a?'transform .28s '+EASE:'none';m.style.transform=sc==1&&!tx&&!ty?'':'translate('+tx+'px,'+ty+'px) scale('+sc+')'}
+function clamp(){var m=cur(),mx=Math.max(0,(m.clientWidth*sc-innerWidth)/2+(sc>1?20:0)),my=Math.max(0,(m.clientHeight*sc-innerHeight)/2+(sc>1?20:0));tx=Math.max(-mx,Math.min(mx,tx));ty=Math.max(-my,Math.min(my,ty))}
+function ui(){ct.textContent=(n+1)+' de '+T.length;pv.hidden=n==0;nx.hidden=n==T.length-1}
+function go(k){if(k<0||k>=T.length){dx=0;pos(true);return}var m=cur();sc=1;tx=ty=0;m.style.transform='';n=k;dx=0;pos(true);ui()}
+function flip(m,r0,rev,done){var r1=m.getBoundingClientRect();
+var f='translate('+(r0.left-r1.left+(r0.width-r1.width)/2)+'px,'+(r0.top-r1.top+(r0.height-r1.height)/2)+'px) scale('+(r0.width/r1.width)+')';
+var a=m.animate(rev?[{transform:'none'},{transform:f}]:[{transform:f},{transform:'none'}],{duration:DUR,easing:EASE,fill:'both'});
+if(done)a.onfinish=done}
+function open(list,i){T=list;n=i;closing=false;tr.innerHTML='';
+T.forEach(function(t){var s=document.createElement('div');s.className='sl';var m=new Image();m.src=t.src;m.alt=t.alt;s.appendChild(m);tr.appendChild(s)});
+sc=1;tx=ty=0;dx=0;pos(false);ui();d.showModal();
+var m=cur(),r0=T[i].getBoundingClientRect();
+Promise.resolve(m.decode&&m.decode()).catch(function(){}).then(function(){flip(m,r0,false)});
+d.animate([{opacity:0},{opacity:1}],{duration:DUR*.7})}
+function close(){if(closing)return;closing=true;var m=cur();sc=1;tx=ty=0;m.style.transform='';
+var r0=T[n].getBoundingClientRect(),ok=r0.bottom>0&&r0.top<innerHeight;
+function end(){d.close()}
+d.animate([{opacity:1},{opacity:0}],{duration:DUR*.8,fill:'both'});
+if(ok&&DUR)flip(m,r0,true,end);else setTimeout(end,DUR*.8)}
 document.querySelectorAll('[data-z]').forEach(function(b){b.addEventListener('click',function(){
-L=[].slice.call(b.closest('section').querySelectorAll('[data-z] img'));show(L.indexOf(b.querySelector('img')));d.showModal()})});
-document.getElementById('pv').onclick=function(){show(n-1)};
-document.getElementById('nx').onclick=function(){show(n+1)};
-document.getElementById('x').onclick=function(){d.close()};
-d.addEventListener('click',function(e){if(e.target===d||e.target.classList.contains('lb'))d.close()});
-d.addEventListener('keydown',function(e){if(e.key==='ArrowLeft')show(n-1);if(e.key==='ArrowRight')show(n+1)});
-var sx=null;d.addEventListener('touchstart',function(e){sx=e.touches[0].clientX},{passive:true});
-d.addEventListener('touchend',function(e){if(sx===null)return;var dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>50)show(n+(dx<0?1:-1));sx=null});
+var L=[].slice.call(b.closest('section').querySelectorAll('[data-z] img'));open(L,L.indexOf(b.querySelector('img')))})});
+pv.onclick=function(){go(n-1)};nx.onclick=function(){go(n+1)};document.getElementById('x').onclick=close;
+d.addEventListener('cancel',function(e){e.preventDefault();close()});
+d.addEventListener('keydown',function(e){if(e.key=='ArrowLeft')go(n-1);if(e.key=='ArrowRight')go(n+1)});
+function dist(){var k=Object.keys(pts);return Math.hypot(pts[k[0]].x-pts[k[1]].x,pts[k[0]].y-pts[k[1]].y)}
+var d0=1,s0=1;
+lb.addEventListener('pointerdown',function(e){if(e.target.closest('button'))return;lb.setPointerCapture(e.pointerId);pts[e.pointerId]={x:e.clientX,y:e.clientY};
+if(Object.keys(pts).length==2){mode='pinch';d0=dist();s0=sc}else{mode=sc>1?'pan':'swipe';last={x:e.clientX,y:e.clientY};t0=Date.now();moved=0;dx=0}});
+lb.addEventListener('pointermove',function(e){if(!pts[e.pointerId])return;var p=pts[e.pointerId],mx=e.clientX-p.x,my=e.clientY-p.y;p.x=e.clientX;p.y=e.clientY;
+if(mode=='pinch'&&Object.keys(pts).length==2){sc=Math.max(1,Math.min(5,s0*dist()/d0));clamp();zs(false)}
+else if(mode=='pan'){tx+=mx;ty+=my;moved+=Math.abs(mx)+Math.abs(my);clamp();zs(false)}
+else if(mode=='swipe'){dx+=mx;moved+=Math.abs(mx)+Math.abs(my);if((n==0&&dx>0)||(n==T.length-1&&dx<0))dx*=.4;pos(false)}});
+function up(e){if(!pts[e.pointerId])return;delete pts[e.pointerId];if(Object.keys(pts).length)return;
+var tap=moved<8&&Date.now()-t0<300;
+if(mode=='pinch'){if(sc<1.05){sc=1;tx=ty=0}zs(true)}
+else if(mode=='pan'&&!tap){zs(false)}
+else if(tap){var now=Date.now();if(now-lastTap<320){sc=sc>1?1:2.5;tx=ty=0;zs(true);lastTap=0}else lastTap=now;dx=0;pos(false)}
+else if(mode=='swipe'){var v=Math.abs(dx)/Math.max(1,Date.now()-t0);if(Math.abs(dx)>innerWidth*.18||v>.5)go(n+(dx<0?1:-1));else{dx=0;pos(true)}}
+mode=''}
+lb.addEventListener('pointerup',up);lb.addEventListener('pointercancel',up);
+addEventListener('resize',function(){if(d.open)pos(false)});
 })();
 </script>
 </body>
