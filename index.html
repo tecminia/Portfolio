@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Darlan Cardoso – Sistemas para a gestão pública</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f3f5f8;--ink:#14181f;--mute:#566070;--card:#fff;--line:#dde2ea;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1319;--ink:#eef1f6;--mute:#9aa5b6;--card:#171c25;--line:#283040}}
+:root[data-theme="dark"]{--bg:#0f1319;--ink:#eef1f6;--mute:#9aa5b6;--card:#171c25;--line:#283040}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.6 "Instrument Sans",system-ui,sans-serif}
+h1,h2,h3{font-family:"Bricolage Grotesque","Instrument Sans",sans-serif;line-height:1.05;margin:0}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+.hero{padding:72px 0 56px}
+.hero .wrap{display:grid;grid-template-columns:1.1fr 1fr;gap:48px;align-items:center}
+h1{font-size:clamp(40px,6vw,76px);font-weight:800;letter-spacing:-.03em}
+.hero p{max-width:34em;color:var(--mute);margin:20px 0 0}
+.nav{display:flex;gap:10px;flex-wrap:wrap;margin-top:28px}
+.nav a{padding:9px 16px;border:1.5px solid var(--line);border-radius:99px;color:var(--ink);text-decoration:none;font-weight:600;font-size:15px;background:var(--card)}
+.nav a:hover,.nav a:focus-visible{border-color:var(--ink);outline:none}
+.stack{position:relative;height:340px}
+.stack img{position:absolute;width:68%;border-radius:12px;border:1px solid var(--line);box-shadow:0 18px 40px -18px rgba(0,0,0,.45)}
+.stack img:nth-child(1){left:0;top:0;transform:rotate(-4deg)}
+.stack img:nth-child(2){right:0;top:80px;transform:rotate(3deg)}
+.stack img:nth-child(3){left:12%;bottom:0;transform:rotate(-1deg)}
+.proj{padding:72px 0;border-top:1px solid var(--line)}
+.proj:nth-of-type(even){background:color-mix(in srgb,var(--acc) 7%,var(--bg))}
+.head{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:end;margin-bottom:36px}
+.proj h2{font-size:clamp(36px,5vw,60px);font-weight:800;letter-spacing:-.02em;color:var(--acc)}
+.sub{font-weight:600;margin-top:8px}
+.desc{color:var(--mute);margin:0}
+.facts{display:flex;gap:28px;flex-wrap:wrap;margin:18px 0 0;padding:0;list-style:none}
+.facts b{display:block;font:800 30px/1 "Bricolage Grotesque",sans-serif;color:var(--ink)}
+.facts span{font-size:14px;color:var(--mute)}
+.grid{display:grid;grid-template-columns:repeat(6,1fr);gap:20px}
+.shot{grid-column:span 2;margin:0}
+.shot.w{grid-column:span 3}
+.shot.f{grid-column:span 6}
+.frame{display:block;width:100%;padding:0;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--card);cursor:zoom-in;box-shadow:0 12px 30px -20px rgba(0,0,0,.5)}
+.frame:focus-visible{outline:3px solid var(--acc);outline-offset:3px}
+.frame:before{content:"";display:block;height:22px;background:radial-gradient(circle at 12px 11px,#ff6b62 4px,transparent 4.5px),radial-gradient(circle at 28px 11px,#ffc23d 4px,transparent 4.5px),radial-gradient(circle at 44px 11px,#34c759 4px,transparent 4.5px),var(--line)}
+.frame img{display:block;width:100%;height:auto}
+.phones{grid-column:span 6;display:flex;gap:24px;justify-content:center;flex-wrap:wrap}
+.phone{width:min(280px,44%);margin:0}
+.phone .frame{border-radius:26px;border:6px solid var(--ink)}
+.phone .frame:before{content:"";display:block;height:22px;background:radial-gradient(circle at 12px 11px,#ff6b62 4px,transparent 4.5px),radial-gradient(circle at 28px 11px,#ffc23d 4px,transparent 4.5px),radial-gradient(circle at 44px 11px,#34c759 4px,transparent 4.5px),var(--line)}
+figcaption{font-size:14px;color:var(--mute);margin-top:8px}
+footer{padding:48px 0 64px;border-top:1px solid var(--line);color:var(--mute)}
+footer strong{color:var(--ink)}
+dialog{border:0;padding:0;background:transparent;max-width:96vw;max-height:94vh}
+dialog::backdrop{background:rgba(5,8,14,.85)}
+dialog img{max-width:96vw;max-height:90vh;border-radius:8px;display:block}
+dialog button{position:absolute;top:8px;right:8px;border:0;border-radius:99px;padding:8px 14px;font:600 14px "Instrument Sans",sans-serif;cursor:pointer}
+@media (max-width:760px){.hero .wrap,.head{grid-template-columns:1fr}.stack{height:300px}.shot,.shot.w{grid-column:span 6}.proj{padding:48px 0}}
+</style>
+</head>
+<body>
+<header class="hero"><div class="wrap">
+<div>
+<h1>Sistemas que organizam o trabalho da prefeitura.</h1>
+<p>Sou Darlan Cardoso, desenvolvedor. Criei três sistemas para a gestão pública de Careiro, no Amazonas: um para a Defesa Civil, um para o cadastro imobiliário e um para a Vigilância Sanitária.</p>
+<nav class="nav" aria-label="Projetos"><a href="#sempdec">SEMPDEC</a><a href="#ymob">YMOB</a><a href="#cadvisa">CADVISA</a></nav>
+</div>
+<div class="stack" aria-hidden="true"><img src="assets/sempdec-login.webp" alt=""><img src="assets/ymob-login.webp" alt=""><img src="assets/cadvisa-login.webp" alt=""></div>
+</div></header>
+
+<main>
+<section class="proj" id="sempdec" style="--acc:#e8590c"><div class="wrap">
+<div class="head"><div><h2>SEMPDEC</h2><div class="sub">Gestão da Defesa Civil municipal</div></div>
+<div><p class="desc">Reúne em um só lugar o cadastro de famílias atendidas, o registro das ações em campo, as escalas de plantão, o contracheque e os feriados municipais.</p>
+<ul class="facts"><li><b>4.275</b><span>fichas de famílias</span></li><li><b>5</b><span>módulos</span></li></ul></div></div>
+<div class="grid">
+<figure class="shot w"><button class="frame" data-z><img src="assets/sempdec-menu.webp" alt="Menu principal do SEMPDEC" loading="lazy"></button><figcaption>Menu principal com os cinco módulos</figcaption></figure>
+<figure class="shot w"><button class="frame" data-z><img src="assets/sempdec-familias.webp" alt="Lista de famílias cadastradas" loading="lazy"></button><figcaption>Famílias cadastradas, com filtro por motivo e comunidade, busca e geração de PDF e recibo</figcaption></figure>
+<figure class="shot w"><button class="frame" data-z><img src="assets/sempdec-acoes.webp" alt="Formulário de ação executada" loading="lazy"></button><figcaption>Registro de ações executadas</figcaption></figure>
+<figure class="shot w"><button class="frame" data-z><img src="assets/sempdec-plantao.webp" alt="Escala de plantão de novembro" loading="lazy"></button><figcaption>Escala de plantão mensal, com o dia atual em destaque</figcaption></figure>
+<figure class="shot f" style="max-width:520px;margin:0 auto"><button class="frame" data-z><img src="assets/sempdec-login.webp" alt="Tela de login do SEMPDEC" loading="lazy"></button><figcaption>Acesso por login</figcaption></figure>
+</div></div></section>
+
+<section class="proj" id="ymob" style="--acc:#2457c5"><div class="wrap">
+<div class="head"><div><h2>YMOB</h2><div class="sub">Cadastro imobiliário da Prefeitura de Careiro</div></div>
+<div><p class="desc">Os agentes preenchem a ficha do imóvel pelo celular, em sete etapas, e a equipe acompanha tudo em um painel administrativo, com fotos organizadas por bairro, quadra e lote.</p>
+<ul class="facts"><li><b>101</b><span>fichas cadastradas</span></li><li><b>7</b><span>etapas na ficha</span></li><li><b>18</b><span>quadras</span></li></ul></div></div>
+<div class="grid">
+<div class="phones">
+<figure class="phone"><button class="frame" data-z><img src="assets/ymob-mobile-cadastro.webp" alt="Formulário de cadastro no celular" loading="lazy"></button><figcaption>Ficha em etapas, com inscrição imobiliária gerada automaticamente</figcaption></figure>
+<figure class="phone"><button class="frame" data-z><img src="assets/ymob-mobile-fichas.webp" alt="Lista de fichas salvas no celular" loading="lazy"></button><figcaption>Fichas salvas, com foto e busca</figcaption></figure>
+</div>
+<figure class="shot w"><button class="frame" data-z><img src="assets/ymob-dashboard.webp" alt="Dashboard do YMOB" loading="lazy"></button><figcaption>Painel com indicadores e totais por bairro</figcaption></figure>
+<figure class="shot w"><button class="frame" data-z><img src="assets/ymob-registros.webp" alt="Registros por bairro" loading="lazy"></button><figcaption>Registros organizados por bairro e quadra</figcaption></figure>
+<figure class="shot w"><button class="frame" data-z><img src="assets/ymob-fotos.webp" alt="Registros fotográficos por quadra" loading="lazy"></button><figcaption>Registros fotográficos com coordenadas, download e acesso à ficha</figcaption></figure>
+<figure class="shot w"><button class="frame" data-z><img src="assets/ymob-login.webp" alt="Login do YMOB" loading="lazy"></button><figcaption>Login e criação de conta</figcaption></figure>
+</div></div></section>
+
+<section class="proj" id="cadvisa" style="--acc:#d6487e"><div class="wrap">
+<div class="head"><div><h2>CADVISA</h2><div class="sub">Cadastro sanitário municipal</div></div>
+<div><p class="desc">Controla os estabelecimentos fiscalizados pela Vigilância Sanitária: situação, risco, licenciamento, cronograma mensal de fiscalização e biblioteca de legislação.</p>
+<ul class="facts"><li><b>786</b><span>estabelecimentos ativos</span></li><li><b>221</b><span>fiscalizados</span></li><li><b>40+</b><span>localidades</span></li></ul></div></div>
+<div class="grid">
+<figure class="shot f"><button class="frame" data-z><img src="assets/cadvisa-dashboard.webp" alt="Dashboard do CADVISA" loading="lazy"></button><figcaption>Dashboard com fiscalizados, pendentes, inativos, classe de risco e categorias</figcaption></figure>
+<figure class="shot w"><button class="frame" data-z><img src="assets/cadvisa-estabelecimentos.webp" alt="Lista de estabelecimentos" loading="lazy"></button><figcaption>Estabelecimentos, com busca e filtros por localidade, categoria, risco e status</figcaption></figure>
+<figure class="shot w"><button class="frame" data-z><img src="assets/cadvisa-cronograma.webp" alt="Cronograma mensal de fiscalização" loading="lazy"></button><figcaption>Cronograma mensal de fiscalização, com bloqueio de meses encerrados</figcaption></figure>
+<figure class="shot w"><button class="frame" data-z><img src="assets/cadvisa-legislacao.webp" alt="Biblioteca de legislação" loading="lazy"></button><figcaption>Biblioteca de legislação sanitária</figcaption></figure>
+<figure class="shot w"><button class="frame" data-z><img src="assets/cadvisa-config.webp" alt="Configurações do CADVISA" loading="lazy"></button><figcaption>Configurações: localidades e usuários</figcaption></figure>
+</div></div></section>
+</main>
+
+<footer><div class="wrap"><strong>Darlan Cardoso</strong> · Desenvolvedor de sistemas para a gestão pública · Careiro, AM</div></footer>
+
+<dialog id="dlg"><img alt=""><button type="button" id="x">Fechar</button></dialog>
+<script>
+(function(){var d=document.getElementById('dlg'),i=d.querySelector('img');
+document.querySelectorAll('[data-z]').forEach(function(b){b.addEventListener('click',function(){var m=b.querySelector('img');i.src=m.src;i.alt=m.alt;d.showModal()})});
+d.addEventListener('click',function(){d.close()});
+})();
+</script>
+</body>
+</html>
