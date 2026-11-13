@@ -151,15 +151,15 @@ var a=m.animate(rev?[{transform:'none'},{transform:f}]:[{transform:f},{transform
 if(done)a.onfinish=done}
 function open(list,i){T=list;n=i;closing=false;tr.innerHTML='';
 T.forEach(function(t){var s=document.createElement('div');s.className='sl';var m=new Image();m.src=t.src;m.alt=t.alt;s.appendChild(m);tr.appendChild(s)});
-sc=1;tx=ty=0;dx=0;pos(false);ui();d.showModal();
+d.getAnimations().forEach(function(a){a.cancel()});sc=1;tx=ty=0;dx=0;pos(false);ui();d.showModal();
 var m=cur(),r0=T[i].getBoundingClientRect();
 Promise.resolve(m.decode&&m.decode()).catch(function(){}).then(function(){flip(m,r0,false)});
 d.animate([{opacity:0},{opacity:1}],{duration:DUR*.7})}
 function close(){if(closing)return;closing=true;var m=cur();sc=1;tx=ty=0;m.style.transform='';
 var r0=T[n].getBoundingClientRect(),ok=r0.bottom>0&&r0.top<innerHeight;
-function end(){d.close()}
-d.animate([{opacity:1},{opacity:0}],{duration:DUR*.8,fill:'both'});
-if(ok&&DUR)flip(m,r0,true,end);else setTimeout(end,DUR*.8)}
+function end(){d.close();d.getAnimations().forEach(function(a){a.cancel()})}
+d.animate([{opacity:1},{opacity:0}],{duration:DUR,fill:'both'});
+if(ok&&DUR)flip(m,r0,true,end);else setTimeout(end,DUR)}
 document.querySelectorAll('[data-z]').forEach(function(b){b.addEventListener('click',function(){
 var L=[].slice.call(b.closest('section').querySelectorAll('[data-z] img'));open(L,L.indexOf(b.querySelector('img')))})});
 pv.onclick=function(){go(n-1)};nx.onclick=function(){go(n+1)};document.getElementById('x').onclick=close;
